@@ -4,6 +4,7 @@ import lombok.Data;
 import org.sid.entites.AppUser;
 import org.sid.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +18,9 @@ public class UserController {
     @PostMapping("/register")
     public AppUser register(@RequestBody UserForm username){
 
-        return accountService.saveUser(username.getUsername(),username.getPassword(),username.getConfirmed());
+        return accountService.saveUser(username.getUsername(),username.getPassword());
 
     }
-
-
 
 
 }
@@ -29,5 +28,4 @@ public class UserController {
 class UserForm{
     private String username;
     private String password;
-    private String confirmed;
 }
